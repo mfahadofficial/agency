@@ -1,0 +1,64 @@
+
+<button (click)="getPaginateAgencies('10')" class="btn btn-primary">Paginate filter 10</button>
+<button (click)="getPaginateAgencies('15')" class="btn btn-primary">Paginate filter 15</button>
+<button (click)="getPaginateAgencies('20')" class="btn btn-primary">Paginate filter 20</button>
+<button (click)="getPaginateAgencies('50')" class="btn btn-primary">Paginate filter 50</button>
+<button (click)="next(links.next.href)" class="btn btn-danger">Next</button>
+<button (click)="previous(links.prev.href)" class="btn btn-secondary">Previous</button>
+<br><br>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <ng-container *matCellDef="let element">
+        <td mat-cell > 
+            
+            <i class="material-icons mat-icon-button" 
+            (click)="detail(element.id )">
+            {{element.title ? element.title : '-'}}  ({{element.abbreviation ? element.abbreviation : '-'}}) 
+         </i> 
+          </td>
+
+      </ng-container>
+      
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="website">
+      <th mat-header-cell *matHeaderCellDef> Website </th>
+      <ng-container *matCellDef="let element">
+      <td mat-cell  > {{element.website ? element.website.uri : '-' }} </td>
+    </ng-container>
+
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="submission_address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <ng-container *matCellDef="let element">
+        <td mat-cell >
+             {{ element.submission_address ? element.submission_address.address_line1 : '-'}}
+             {{ element.submission_address ? element.submission_address.address_line2 : '-'}}
+             {{ element.submission_address ? element.submission_address.locality : '-'}}
+             {{ element.submission_address ? element.submission_address.administrative_area : '-'}}
+             {{ element.submission_address ? element.submission_address.postal_code : '-'}}
+             {{ element.submission_address ? element.submission_address.country_code : '-'}}
+             </td>
+      </ng-container>
+      
+    </ng-container>
+  
+ 
+  
+    <tr mat-header-row *matHeaderRowDef="['title', 'website', 'submission_address']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['title', 'website', 'submission_address'];"></tr>
+  </table>
+  
+
+
