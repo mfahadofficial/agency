@@ -1,6 +1,7 @@
-
+<h1>Detail</h1>
 <mat-list *ngFor="let element of dataSource" >
-    <mat-list-item> {{element.relationships.agency.data.type ? element.relationships.agency.data.type : '-'}} </mat-list-item>
-    <mat-list-item> {{element.relationships.foia_officers.links.related.href ? element.relationships.foia_officers.links.related.href : '-'}} </mat-list-item>
-    <mat-list-item> {{element.relationships.field_misc.links.related.href ? element.relationships.field_misc.links.related.href : '-'}} </mat-list-item>
+    <mat-list-item> <b>Agency:</b> {{element.relationships.agency.data.type ? element.relationships.agency.data.type : '-'}} </mat-list-item>
+    <mat-list-item> <b>Foia officers:</b> {{element.relationships.foia_officers.links.related.href ? element.relationships.foia_officers.links.related.href : '-'}} </mat-list-item>
+    <mat-list-item> <b>Field Misc:</b> {{element.relationships.field_misc.links.related.href ? element.relationships.field_misc.links.related.href : '-'}} </mat-list-item>
+    <hr>
    </mat-list>

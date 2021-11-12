@@ -53,7 +53,7 @@ export class AgencyComponent implements OnInit {
 
                     if(val == '10'){
                   
-                                          this.agencyService.getPaginateAgencies10()
+                                          this.agencyService.getPaginateAgencies10(val)
                                           .subscribe((resp : any) => {
                                           this.data = resp.data;
                                           this.links = resp.links;

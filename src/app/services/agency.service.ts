@@ -25,9 +25,11 @@ export class AgencyService {
     return this.httpClient.get('https://api.foia.gov/api/agency_components?&fields%5Bagency_component%5D=title,abbreviation,website,submission_address', {headers: headers});
   }
 
-  getPaginateAgencies10() {
+  getPaginateAgencies10(val:any) {
+    console.log(val);
+    this.url = 'https://api.foia.gov/api/agency_components?&&fields[agency_component]=title,abbreviation,website,submission_address&page[limit]=10';
     let headers = new HttpHeaders().set('X-API-Key', this.apiKey);
-  return this.httpClient.get('https://api.foia.gov/api/agency_components?&&fields[agency_component]=title,abbreviation,website,submission_address&page[limit]=10', {headers: headers}); 
+  return this.httpClient.get(this.url, {    headers: headers}); 
   }
 
   getPaginateAgencies15() {
